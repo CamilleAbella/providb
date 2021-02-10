@@ -1,4 +1,7 @@
 .idea
 .vscode
-node_modules
-src
+/node_modules
+/src
+/yarn.lock
+/package-lock.json
+/tsconfig.json
