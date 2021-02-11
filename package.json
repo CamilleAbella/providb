@@ -11,7 +11,7 @@
   },
   "scripts": {
     "format": "prettier src test.ts jest.config.js package.json readme.md tsconfig.json --write",
-    "prepublish": "npm run format && npm run test",
+    "prepublishOnly": "npm run format && npm run test",
     "test": "npm run build && jest",
     "build": "tsc"
   },
