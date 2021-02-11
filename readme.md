@@ -1,6 +1,6 @@
-# Providb
+# ProviDB
 
-> The versatile database provider for TypeScript and JavaScript projects.
+> The versatile abstract database provider for TypeScript and JavaScript projects.
 
 ## Create your own provider
 
