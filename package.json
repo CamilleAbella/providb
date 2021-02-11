@@ -10,10 +10,10 @@
     "semi": false
   },
   "scripts": {
-    "format": "prettier src test.js jest.config.js package.json readme.md tsconfig.json --write",
-    "build": "del-cli dist/** -d && tsc",
+    "format": "prettier src test.ts jest.config.js package.json readme.md tsconfig.json --write",
     "prepublish": "npm run prettier && npm run test",
-    "test": "npm run build && jest"
+    "test": "npm run build && jest",
+    "build": "tsc"
   },
   "keywords": [],
   "repository": {
@@ -22,10 +22,9 @@
   },
   "devDependencies": {
     "@types/node": "^14.0.27",
-    "del-cli": "^3.0.1",
     "jest": "^26.4.2",
     "prettier": "^2.0.5",
+    "ts-jest": "^26.5.1",
     "typescript": "^4.0.2"
-  },
-  "dependencies": {}
+  }
 }

@@ -10,7 +10,7 @@ export default abstract class ProviDB<
    * @protected
    */
   protected constructor(public readonly name: string) {
-    if (!ProviDB.database) throw new Error("The database is not setup.")
+    if (!ProviDB.databaseIsSetup) throw new Error("The database is not setup.")
 
     this.setup(name)
       .then(() => (this.isSetup = true))
@@ -19,6 +19,15 @@ export default abstract class ProviDB<
           `Error occurred during setup of "${name}" collection.\nError: ${error.message}`
         )
       })
+  }
+
+  /**
+   *
+   */
+  abstract get db(): any
+
+  static get databaseIsSetup(): boolean {
+    return this.database === undefined
   }
 
   /**
@@ -54,7 +63,9 @@ export default abstract class ProviDB<
    *
    * @param key
    */
-  abstract get<value extends Value = Value>(key: string): Promise<value>
+  abstract get<value extends Value = Value>(
+    key: string
+  ): Promise<value | undefined>
 
   /**
    *
@@ -82,7 +93,7 @@ export default abstract class ProviDB<
    */
   abstract find<value extends Value = Value>(
     test: (value: Value, key: string) => boolean
-  ): Promise<value | null>
+  ): Promise<value | undefined>
 
   /**
    *
@@ -103,5 +114,5 @@ export default abstract class ProviDB<
   >(
     key: string,
     forEach: (value: SubValue, key: SubKey) => unknown
-  ): Promise<value>
+  ): Promise<value | undefined>
 }
