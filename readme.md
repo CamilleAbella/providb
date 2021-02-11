@@ -1,4 +1,4 @@
-# ProviDB
+# Providb
 
 > The versatile database provider for TypeScript and JavaScript projects.
 

@@ -1,14 +1,44 @@
 /**
  *
  */
-export interface ProviderConfig {}
-
-/**
- *
- */
-export abstract class Provider<
+export default abstract class ProviDB<
   Value extends boolean | number | string = boolean | number | string
 > {
+  /**
+   *
+   * @param name
+   * @protected
+   */
+  protected constructor(public readonly name: string) {
+    if (!ProviDB.database) throw new Error("The database is not setup.")
+
+    this.setup(name)
+      .then(() => (this.isSetup = true))
+      .catch((error) => {
+        throw new Error(
+          `Error occurred during setup of "${name}" collection.\nError: ${error.message}`
+        )
+      })
+  }
+
+  /**
+   *
+   */
+  static database: any
+
+  /**
+   *
+   * @private
+   */
+  private isSetup: boolean = false
+
+  /**
+   *
+   * @param name
+   * @private
+   */
+  abstract setup(name: string): Promise<void>
+
   /**
    *
    * @param key
