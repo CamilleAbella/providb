@@ -14,7 +14,7 @@
     "useTabs": false
   },
   "scripts": {
-    "prettier": "prettier src test.js jest.config.js package.json readme.md tsconfig.json --write",
+    "format": "prettier src test.js jest.config.js package.json readme.md tsconfig.json --write",
     "build": "del-cli dist/** -d && tsc",
     "prepublish": "yarn prettier && yarn test",
     "test": "yarn build && jest"
